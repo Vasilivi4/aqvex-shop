@@ -28,17 +28,14 @@ export default function App() {
 
   return (
     <div className="app">
-      {/* ── HEADER ── */}
       <header className="header">
         <div className="container header-inner">
           <img src="img/image.png" className="footer-img" />
         </div>
       </header>
 
-      {/* ── MAIN ── */}
       <main className="container main">
 
-        {/* КАТЕГОРИИ */}
         {!loading && categories.length > 0 && (
           <div className="category-tabs">
             <button className={`cat-tab${!category ? ' active' : ''}`} onClick={() => handleCategory('')}>
@@ -52,7 +49,6 @@ export default function App() {
           </div>
         )}
 
-        {/* ПОИСК — отдельная строка по центру */}
         <div className="search-row">
           <div className="search-box">
             <Search size={15} className="search-icon" />
@@ -70,7 +66,6 @@ export default function App() {
           </div>
         </div>
 
-        {/* TOOLBAR: счётчик слева, сортировка справа */}
         <div className="toolbar">
           <span className="count-label">
             {loading ? '…' : `${totalCount} товаров`}
@@ -100,7 +95,6 @@ export default function App() {
           )
         }
 
-        {/* СЕТКА */}
         {
           loading ? (
             <div className="grid">
@@ -137,11 +131,10 @@ export default function App() {
         <Pagination page={page} totalPages={totalPages} onPageChange={handlePageChange} />
       </main >
 
-      {/* ── FOOTER ── */}
+
       < footer className="footer" >
         <div className="container footer-inner">
           <div className="footer-brand">
-            {/* Иконка логотипа — квадрат как в макете */}
             <div className="footer-logo-icon">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                 <path d="M3 12L8 4L13 12H3Z" fill="white" opacity=".9" />
@@ -152,7 +145,6 @@ export default function App() {
             <span className="footer-copy">AQVEX © 2026 | Все права защищены</span>
           </div>
           <div className="payment-icons">
-            {/* Mastercard */}
             <svg width="65" height="28" viewBox="0 0 65 28" fill="none" aria-label="Mastercard">
               <rect width="65" height="28" rx="5" fill="#F3F4F6" stroke="#E5E7EB" />
               <text x="33" y="18" fontFamily="Arial,sans-serif" fontWeight="800" fontSize="14" fill="#990e0e">M</text>
@@ -161,19 +153,16 @@ export default function App() {
               <circle cx="25" cy="14" r="7" fill="#F79E1B" />
               <path d="M21 8.54a7 7 0 0 1 0 10.92A7 7 0 0 1 21 8.54z" fill="#FF5F00" />
             </svg>
-            {/* Verified by Visa */}
             <svg width="50" height="28" viewBox="0 0 50 28" fill="none" aria-label="Visa">
               <rect width="50" height="28" rx="5" fill="#F3F4F6" stroke="#E5E7EB" />
               <text x="6" y="18" fontFamily="Arial,sans-serif" fontWeight="800" fontSize="14" fill="#1A1F71">VISA</text>
             </svg>
-            {/* Apple Pay */}
             <svg width="52" height="28" viewBox="0 0 52 28" fill="none" aria-label="Apple Pay">
               <rect width="52" height="28" rx="5" fill="#F3F4F6" stroke="#E5E7EB" />
               <path d="M17 9.5c.55-.65.92-1.55.82-2.45-.8.03-1.77.53-2.34 1.18-.52.58-.97 1.5-.85 2.38.89.07 1.8-.44 2.37-1.11z" fill="#1C1C1E" />
               <path d="M17.8 10.8c-1.3-.08-2.42.74-3.04.74-.63 0-1.6-.7-2.64-.68-1.36.02-2.62.79-3.31 2.02-1.42 2.44-.37 6.06 1 8.06.67 1 1.47 2.1 2.53 2.06.99-.04 1.39-.65 2.59-.65s1.55.65 2.62.63c1.1-.02 1.78-1 2.45-2 .77-1.14 1.09-2.25 1.1-2.3-.03-.02-2.1-.81-2.12-3.22-.02-2.01 1.64-2.97 1.72-3.02-.95-1.4-2.42-1.55-2.9-1.64z" fill="#1C1C1E" />
               <text x="24" y="18" fontFamily="Arial,sans-serif" fontWeight="500" fontSize="11" fill="#1C1C1E">Pay</text>
             </svg>
-            {/* Google Pay */}
             <svg width="73" height="28" viewBox="0 0 73 28" fill="none" aria-label="Google Pay">
               <rect width="73" height="28" rx="5" fill="#F3F4F6" stroke="#E5E7EB" />
               <text x="6" y="18" fontFamily="Arial,sans-serif" fontSize="11" fontWeight="500">

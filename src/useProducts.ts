@@ -11,14 +11,12 @@ export function useProducts() {
   const [loading, setLoading] = useState(true);
   const [usingMock, setUsingMock] = useState(false);
 
-  // UI state
   const [search, setSearch] = useState('');
   const [sort, setSort] = useState<SortOption>('popularity');
   const [page, setPage] = useState(1);
   const [category, setCategory] = useState<string>('');
   const [selectedVolumes, setSelectedVolumes] = useState<Record<string, string>>({});
 
-  // Debounced search — фильтрация не на каждый символ, а через 300мс после остановки
   const debouncedSearch = useDebounce(search, 300);
 
   useEffect(() => {
@@ -44,7 +42,6 @@ export function useProducts() {
     load();
   }, []);
 
-  // Список уникальных категорий из данных
   const categories = useMemo(() => {
     const set = new Set(allProducts.map(p => p.category));
     return Array.from(set).sort();
@@ -59,9 +56,9 @@ export function useProducts() {
 
     switch (sort) {
       case 'popularity': result.sort((a, b) => b.reviews_count - a.reviews_count); break;
-      case 'price_asc':  result.sort((a, b) => a.price - b.price); break;
+      case 'price_asc': result.sort((a, b) => a.price - b.price); break;
       case 'price_desc': result.sort((a, b) => b.price - a.price); break;
-      case 'rating':     result.sort((a, b) => b.rating - a.rating); break;
+      case 'rating': result.sort((a, b) => b.rating - a.rating); break;
     }
     return result;
   }, [allProducts, debouncedSearch, sort, category]);
@@ -78,7 +75,6 @@ export function useProducts() {
 
   const handlePageChange = (p: number) => {
     setPage(p);
-    // Скролл вверх при смене страницы
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 

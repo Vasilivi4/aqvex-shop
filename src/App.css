@@ -38,7 +38,6 @@ body {
   padding: 0 24px;
 }
 
-/* ── HEADER ─────────────────────────────────── */
 .header {
   background: #fff;
   border-bottom: 1px solid var(--gray-200);
@@ -56,7 +55,6 @@ body {
   letter-spacing: -.5px;
 }
 
-/* Строка поиска — отдельный блок между категориями и тулбаром */
 .search-row {
   display: flex;
   justify-content: flex-end;
@@ -118,12 +116,10 @@ body {
   color: var(--gray-700);
 }
 
-/* ── MAIN ───────────────────────────────────── */
 .main {
   padding: 20px 0 60px;
 }
 
-/* ── CATEGORY TABS ──────────────────────────── */
 .category-tabs {
   display: flex;
   gap: 8px;
@@ -154,7 +150,6 @@ body {
   color: #fff;
 }
 
-/* ── TOOLBAR ────────────────────────────────── */
 .toolbar {
   display: flex;
   align-items: center;
@@ -219,7 +214,6 @@ body {
 }
 
 
-/* ── GRID ───────────────────────────────────── */
 .grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -244,7 +238,6 @@ body {
   }
 }
 
-/* ── PRODUCT CARD ───────────────────────────── */
 .product-card {
   background: #fff;
   border: 1px solid var(--gray-200);
@@ -264,7 +257,6 @@ body {
   opacity: .75;
 }
 
-/* Image area — белый фон как в макете */
 .card-image {
   position: relative;
   background: #fff;
@@ -308,7 +300,6 @@ body {
   border-radius: 20px;
 }
 
-/* Card body */
 .card-body {
   padding: 12px 14px 14px;
   display: flex;
@@ -317,7 +308,6 @@ body {
   flex: 1;
 }
 
-/* Prices — порядок как в макете: старая → новая → бейдж */
 .prices {
   display: flex;
   align-items: center;
@@ -359,12 +349,10 @@ body {
   min-height: 56px;
 }
 
-/* Stars */
 .rating-row {
   display: flex;
   align-items: center;
   gap: 0px;
-  /* Без gap — звёзды вплотную */
   line-height: 1;
 }
 
@@ -385,7 +373,6 @@ body {
   flex-shrink: 0;
 }
 
-/* Meta row — В наличии · Категория на одной строке */
 .meta-row {
   display: flex;
   align-items: center;
@@ -418,7 +405,6 @@ body {
   color: var(--gray-500);
 }
 
-/* Card footer */
 .card-footer {
   display: flex;
   align-items: center;
@@ -493,7 +479,6 @@ body {
   color: var(--gray-400);
 }
 
-/* ── SKELETON ───────────────────────────────── */
 .skeleton {
   background: var(--gray-100);
   border-radius: 10px;
@@ -513,7 +498,6 @@ body {
   }
 }
 
-/* ── EMPTY STATE ────────────────────────────── */
 .empty {
   text-align: center;
   padding: 64px 24px;
@@ -550,7 +534,6 @@ body {
   background: #1d4ed8;
 }
 
-/* ── PAGINATION ─────────────────────────────── */
 .pagination {
   display: flex;
   align-items: center;
@@ -602,7 +585,6 @@ body {
   font-size: 16px;
 }
 
-/* ── BANNERS ────────────────────────────────── */
 .info-banner {
   background: #EFF6FF;
   border: 1px solid #BFDBFE;
@@ -613,7 +595,6 @@ body {
   font-size: 13px;
 }
 
-/* ── FOOTER ─────────────────────────────────── */
 .footer {
   background: #fff;
   border-top: 1px solid var(--gray-200);
@@ -643,12 +624,9 @@ body {
   align-items: center;
 }
 
-/* Логотипы в футере */
 .footer-img {
   height: 40px;
-  /* Уменьшаем высоту (было 16px) */
   width: auto;
-  /* Ширина подстроится пропорционально */
   display: block;
   object-fit: contain
 }

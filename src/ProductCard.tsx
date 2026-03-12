@@ -13,7 +13,6 @@ function Stars({ rating, count }: { rating: number; count: number }) {
   const rounded = Math.round(rating);
   return (
     <div className="rating-row">
-      {/* Все 5 звёзд в одном span — нет разрывов между filled/empty */}
       {'★★★★★'.split('').map((star, i) => (
         <span
           key={i}
@@ -30,13 +29,13 @@ function Stars({ rating, count }: { rating: number; count: number }) {
 
 function ProductSvg() {
   return (
-    <svg viewBox="0 0 80 130" fill="none" xmlns="http://www.w3.org/2000/svg" style={{width:80,height:130}}>
-      <rect x="18" y="6" width="44" height="118" rx="12" fill="#DDF0F7" stroke="#B8DCE9" strokeWidth="1.2"/>
-      <rect x="22" y="16" width="36" height="60" rx="8" fill="#C4E4F2"/>
-      <rect x="28" y="22" width="24" height="7" rx="3" fill="#9DCEE3"/>
+    <svg viewBox="0 0 80 130" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: 80, height: 130 }}>
+      <rect x="18" y="6" width="44" height="118" rx="12" fill="#DDF0F7" stroke="#B8DCE9" strokeWidth="1.2" />
+      <rect x="22" y="16" width="36" height="60" rx="8" fill="#C4E4F2" />
+      <rect x="28" y="22" width="24" height="7" rx="3" fill="#9DCEE3" />
       <text x="40" y="58" textAnchor="middle" fontSize="6.5" fill="#4A9ABF" fontWeight="700" fontFamily="sans-serif">AQVEX</text>
-      <rect x="26" y="10" width="28" height="5" rx="2.5" fill="#B8DCE9"/>
-      <circle cx="40" cy="105" r="9" fill="#C4E4F2" stroke="#9DCEE3" strokeWidth="1"/>
+      <rect x="26" y="10" width="28" height="5" rx="2.5" fill="#B8DCE9" />
+      <circle cx="40" cy="105" r="9" fill="#C4E4F2" stroke="#9DCEE3" strokeWidth="1" />
     </svg>
   );
 }
@@ -52,7 +51,6 @@ export default function ProductCard({ product, selectedVolumeId, onVolumeChange 
 
   return (
     <div className={`product-card${outOfStock ? ' out-of-stock' : ''}`}>
-      {/* ИЗОБРАЖЕНИЕ */}
       <div className="card-image">
         {outOfStock && (
           <div className="stock-overlay">
@@ -70,14 +68,12 @@ export default function ProductCard({ product, selectedVolumeId, onVolumeChange 
             }}
           />
         ) : null}
-        <div style={imageUrl ? {display:'none'} : {}}>
+        <div style={imageUrl ? { display: 'none' } : {}}>
           <ProductSvg />
         </div>
       </div>
 
-      {/* КОНТЕНТ */}
       <div className="card-body">
-        {/* Цены: зачёркнутая → текущая → бейдж (как в макете) */}
         <div className="prices">
           <span className="old-price">{product.old_price} {product.currency}</span>
           <span className="price">{product.price} {product.currency}</span>
@@ -88,13 +84,12 @@ export default function ProductCard({ product, selectedVolumeId, onVolumeChange 
 
         <Stars rating={product.rating} count={product.reviews_count} />
 
-        {/* В наличии · Категория */}
         <div className="meta-row">
           {product.in_stock ? (
             <span className="in-stock">
               <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
-                <circle cx="6.5" cy="6.5" r="6" stroke="#16A34A"/>
-                <path d="M4 6.5L5.8 8.3L9 5" stroke="#16A34A" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
+                <circle cx="6.5" cy="6.5" r="6" stroke="#16A34A" />
+                <path d="M4 6.5L5.8 8.3L9 5" stroke="#16A34A" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
               В наличии
             </span>
@@ -105,7 +100,6 @@ export default function ProductCard({ product, selectedVolumeId, onVolumeChange 
           <span className="category-tag">{product.category}</span>
         </div>
 
-        {/* Объём + кнопка */}
         <div className="card-footer">
           {hasVolumes ? (
             <select
