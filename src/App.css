@@ -39,7 +39,6 @@ body {
 }
 
 /* ── HEADER ─────────────────────────────────── */
-/* ── HEADER ─────────────────────────────────── */
 .header {
   background: #fff;
   border-bottom: 1px solid var(--gray-200);
@@ -48,27 +47,48 @@ body {
 .header-inner {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  height: 64px;
+  height: 60px;
 }
 
-/* SEARCH */
+.logo {
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: -.5px;
+}
+
+/* Строка поиска — отдельный блок между категориями и тулбаром */
+.search-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 12px;
+}
+
 .search-box {
   position: relative;
-  width: 260px;
-  display: flex;
-  align-items: center;
+  width: 400px;
+  max-width: 100%;
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--gray-400);
+  pointer-events: none;
 }
 
 .search-input {
   width: 100%;
-  height: 36px;
-  padding: 0 30px 0 30px;
+  height: 38px;
+  padding: 0 34px 0 38px;
   border: 1px solid var(--gray-200);
-  border-radius: 8px;
-  background: var(--gray-100);
-  font-size: 14px;
+  border-radius: var(--radius);
+  font: 14px var(--font);
+  background: #fff;
+  color: var(--gray-900);
   outline: none;
+  transition: border .15s;
 }
 
 .search-input:focus {
@@ -79,19 +99,19 @@ body {
   color: var(--gray-400);
 }
 
-.search-icon {
-  position: absolute;
-  left: 8px;
-  color: var(--gray-400);
-}
-
 .search-clear {
   position: absolute;
-  right: 8px;
-  border: none;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
   background: none;
+  border: none;
   cursor: pointer;
   color: var(--gray-400);
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+  padding: 2px;
 }
 
 .search-clear:hover {
@@ -138,7 +158,8 @@ body {
 .toolbar {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: right;
+  gap: 16px;
   margin-bottom: 16px;
 }
 
@@ -148,6 +169,7 @@ body {
   display: flex;
   align-items: center;
   gap: 8px;
+  white-space: nowrap;
 }
 
 .reset-filters {
@@ -171,13 +193,14 @@ body {
   position: relative;
   display: flex;
   align-items: center;
+
   gap: 6px;
   cursor: pointer;
 }
 
 .sort-label-text {
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 700;
   color: var(--gray-700);
   pointer-events: none;
 }
@@ -194,6 +217,7 @@ body {
   color: var(--gray-500);
   pointer-events: none;
 }
+
 
 /* ── GRID ───────────────────────────────────── */
 .grid {
@@ -328,53 +352,35 @@ body {
   font-weight: 500;
   color: var(--gray-700);
   line-height: 1.45;
-
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
-
-  height: 56px;
-  /* фиксируем высоту */
+  min-height: 56px;
 }
 
-/* Stars — синие как в макете */
-/* Контейнер для всей строки (звезды + число) */
-/* Контейнер строки рейтинга */
+/* Stars */
 .rating-row {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: flex-start !important;
-  /* Прижать к левому краю */
-  width: fit-content !important;
-  /* Ширина строго по контенту */
-  height: 10px;
-  gap: 1px;
-  /* Расстояние между звездами */
-}
-
-/* Иконка звезды */
-.star-icon {
-  color: var(--accent);
-  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 0px;
+  /* Без gap — звёзды вплотную */
   line-height: 1;
-  display: block;
-  width: 14px;
-  /* Жесткая ширина для каждой звезды */
+}
+
+.star-icon {
+  font-size: 15px;
+  line-height: 1;
+  display: inline-block;
+  width: 15px;
+  text-align: center;
   flex-shrink: 0;
-  /* Запрещаем сжиматься */
 }
 
-.star-icon.empty {
-  color: var(--gray-300) !important;
-}
-
-/* Текст с числом отзывов */
 .reviews-text {
   font-size: 12px;
   color: var(--gray-400);
-  margin-left: 6px !important;
-  /* Отступ цифр от последней звезды */
+  margin-left: 6px;
   line-height: 1;
   flex-shrink: 0;
 }
@@ -623,7 +629,7 @@ body {
 .footer-brand {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
 }
 
 .footer-copy {
@@ -631,19 +637,18 @@ body {
   color: var(--gray-500);
 }
 
-.footer-img {
-  height: 16px;
-  width: auto;
-}
-
-.footer-brand {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
 .payment-icons {
   display: flex;
   gap: 6px;
   align-items: center;
+}
+
+/* Логотипы в футере */
+.footer-img {
+  height: 40px;
+  /* Уменьшаем высоту (было 16px) */
+  width: auto;
+  /* Ширина подстроится пропорционально */
+  display: block;
+  object-fit: contain
 }

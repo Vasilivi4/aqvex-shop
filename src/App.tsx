@@ -32,20 +32,6 @@ export default function App() {
       <header className="header">
         <div className="container header-inner">
           <img src="img/image.png" className="footer-img" />
-          <div className="search-box">
-            <Search size={15} className="search-icon" />
-            <input
-              className="search-input"
-              placeholder="Поиск"
-              value={search}
-              onChange={e => handleSearch(e.target.value)}
-            />
-            {search && (
-              <button className="search-clear" onClick={() => handleSearch('')}>
-                <X size={14} />
-              </button>
-            )}
-          </div>
         </div>
       </header>
 
@@ -66,7 +52,25 @@ export default function App() {
           </div>
         )}
 
-        {/* TOOLBAR */}
+        {/* ПОИСК — отдельная строка по центру */}
+        <div className="search-row">
+          <div className="search-box">
+            <Search size={15} className="search-icon" />
+            <input
+              className="search-input"
+              placeholder="Поиск"
+              value={search}
+              onChange={e => handleSearch(e.target.value)}
+            />
+            {search && (
+              <button className="search-clear" onClick={() => handleSearch('')}>
+                <X size={14} />
+              </button>
+            )}
+          </div>
+        </div>
+
+        {/* TOOLBAR: счётчик слева, сортировка справа */}
         <div className="toolbar">
           <span className="count-label">
             {loading ? '…' : `${totalCount} товаров`}
@@ -88,49 +92,53 @@ export default function App() {
           </label>
         </div>
 
-        {usingMock && (
-          <div className="info-banner">
-            ℹ Данные загружены локально — API недоступен при локальной разработке из-за CORS.
-          </div>
-        )}
+        {
+          usingMock && (
+            <div className="info-banner">
+              ℹ Данные загружены локально — API недоступен при локальной разработке из-за CORS.
+            </div>
+          )
+        }
 
         {/* СЕТКА */}
-        {loading ? (
-          <div className="grid">
-            {Array.from({ length: 8 }).map((_, i) => <div key={i} className="skeleton" />)}
-          </div>
-        ) : products.length === 0 ? (
-          <div className="empty">
-            <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-              <circle cx="24" cy="24" r="23" stroke="#E5E7EB" strokeWidth="2" />
-              <path d="M16 32s2-4 8-4 8 4 8 4" stroke="#9CA3AF" strokeWidth="2" strokeLinecap="round" />
-              <circle cx="18" cy="20" r="2" fill="#9CA3AF" />
-              <circle cx="30" cy="20" r="2" fill="#9CA3AF" />
-            </svg>
-            <p>Ничего не найдено</p>
-            <span>Попробуйте изменить запрос или сбросить фильтры</span>
-            <button className="btn-reset-empty" onClick={() => { handleSearch(''); handleCategory(''); }}>
-              Сбросить фильтры
-            </button>
-          </div>
-        ) : (
-          <div className="grid">
-            {products.map(p => (
-              <ProductCard
-                key={p.id}
-                product={p}
-                selectedVolumeId={selectedVolumes[p.id] ?? p.selected_volume_id}
-                onVolumeChange={vid => handleVolumeChange(p.id, vid)}
-              />
-            ))}
-          </div>
-        )}
+        {
+          loading ? (
+            <div className="grid">
+              {Array.from({ length: 8 }).map((_, i) => <div key={i} className="skeleton" />)}
+            </div>
+          ) : products.length === 0 ? (
+            <div className="empty">
+              <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                <circle cx="24" cy="24" r="23" stroke="#E5E7EB" strokeWidth="2" />
+                <path d="M16 32s2-4 8-4 8 4 8 4" stroke="#9CA3AF" strokeWidth="2" strokeLinecap="round" />
+                <circle cx="18" cy="20" r="2" fill="#9CA3AF" />
+                <circle cx="30" cy="20" r="2" fill="#9CA3AF" />
+              </svg>
+              <p>Ничего не найдено</p>
+              <span>Попробуйте изменить запрос или сбросить фильтры</span>
+              <button className="btn-reset-empty" onClick={() => { handleSearch(''); handleCategory(''); }}>
+                Сбросить фильтры
+              </button>
+            </div>
+          ) : (
+            <div className="grid">
+              {products.map(p => (
+                <ProductCard
+                  key={p.id}
+                  product={p}
+                  selectedVolumeId={selectedVolumes[p.id] ?? p.selected_volume_id}
+                  onVolumeChange={vid => handleVolumeChange(p.id, vid)}
+                />
+              ))}
+            </div>
+          )
+        }
 
         <Pagination page={page} totalPages={totalPages} onPageChange={handlePageChange} />
-      </main>
+      </main >
 
       {/* ── FOOTER ── */}
-      <footer className="footer">
+      < footer className="footer" >
         <div className="container footer-inner">
           <div className="footer-brand">
             {/* Иконка логотипа — квадрат как в макете */}
@@ -175,7 +183,7 @@ export default function App() {
             </svg>
           </div>
         </div>
-      </footer>
-    </div>
+      </footer >
+    </div >
   );
 }
